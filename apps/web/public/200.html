@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>EXO EXPRESS | Page introuvable</title>
+  <style>
+    :root {
+      --orange: #F36A0A;
+      --orange-600: #D85C05;
+      --navy: #071A42;
+      --navy-700: #0E2A5C;
+      --navy-050: #EEF2F9;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(243, 106, 10, 0.10), transparent 45%),
+        var(--white);
+      color: var(--navy);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: var(--white);
+      border: 1px solid #E2E7F0;
+      border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: 0 18px 48px rgba(7, 26, 66, 0.10);
+      text-align: center;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 26px;
+      text-decoration: none;
+    }
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--orange);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: -0.5px;
+    }
+    .wordmark {
+      font-weight: 900;
+      font-size: 17px;
+      letter-spacing: 2px;
+      color: var(--navy);
+    }
+    .code {
+      margin: 0;
+      font-size: 64px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--navy);
+    }
+    .accent {
+      width: 52px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--orange);
+      margin: 18px auto 22px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: -0.4px;
+    }
+    p {
+      margin: 0 auto 26px;
+      max-width: 380px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #4A5875;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      background: var(--orange);
+      color: var(--white);
+      border: 1px solid var(--orange);
+      min-height: 44px;
+      line-height: 20px;
+    }
+    .btn:hover { background: var(--orange-600); border-color: var(--orange-600); }
+    .btnGhost {
+      background: var(--white);
+      color: var(--navy);
+      border-color: #D7DEEA;
+    }
+    .btnGhost:hover { background: var(--navy-050); border-color: var(--navy); }
+    footer {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid #EEF1F6;
+      font-size: 11px;
+      letter-spacing: 0.4px;
+      color: #7A87A3;
+    }
+    @media (max-width: 420px) {
+      .card { padding: 28px 20px; }
+      .code { font-size: 52px; }
+      .actions .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <a class="brand" id="brand-link" href="../" aria-label="EXO EXPRESS — accueil">
+      <span class="mark" aria-hidden="true">EX</span>
+      <span class="wordmark">EXO EXPRESS</span>
+    </a>
+
+    <p class="code" aria-hidden="true">404</p>
+    <div class="accent" aria-hidden="true"></div>
+    <h1>Page introuvable</h1>
+    <p>La page demandée n'existe pas ou a été déplacée. Revenez au tableau de bord pour poursuivre vos opérations.</p>
+
+    <div class="actions">
+      <a class="btn" id="home-link" href="../">Retour au tableau de bord</a>
+      <a class="btn btnGhost" id="shipments-link" href="../shipments/">Voir les expéditions</a>
+    </div>
+
+    <footer>EXO EXPRESS · Système interne de gestion de livraison</footer>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var pathname = window.location.pathname || "/";
+
+      // The same 200.html is published at the domain root (Surge) and under
+      // /dashboard/ (cPanel). Derive the deployment prefix from the URL.
+      var base =
+        pathname === "/dashboard" || pathname.indexOf("/dashboard/") === 0
+          ? "/dashboard"
+          : "";
+
+      function setHref(id, href) {
+        var element = document.getElementById(id);
+        if (element) element.setAttribute("href", href);
+      }
+
+      setHref("brand-link", base + "/");
+      setHref("home-link", base + "/");
+      setHref("shipments-link", base + "/shipments/");
+
+      // Legacy detail URL: /shipments/<id>[/] -> /shipments/view/?id=<id>
+      // Compare the path without the deployment prefix so /dashboard/shipments/<id>
+      // is handled as well.
+      var relativePath =
+        base && (pathname === base || pathname.indexOf(base + "/") === 0)
+          ? pathname.slice(base.length) || "/"
+          : pathname;
+      var match = /^\/shipments\/([^/]+)\/?$/.exec(relativePath);
+      if (!match) return;
+
+      var segment = match[1];
+      // "view" is the current route; "new" is a real page. Never redirect them.
+      if (segment === "view" || segment === "new") return;
+
+      var id = segment;
+      try {
+        id = decodeURIComponent(segment);
+      } catch (error) {
+        id = segment;
+      }
+
+      window.location.replace(
+        base + "/shipments/view/?id=" + encodeURIComponent(id)
+      );
+    })();
+  </script>
+</body>
+</html>

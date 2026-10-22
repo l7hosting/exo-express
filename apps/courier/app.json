@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "EXO EXPRESS",
+    "slug": "exo-express-courier",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "exocourier",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#071A42"
+    },
+    "android": {
+      "package": "ma.exoexpress.courier",
+      "adaptiveIcon": {
+        "backgroundColor": "#071A42"
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ma.exoexpress.courier"
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-font"
+    ]
+  }
+}

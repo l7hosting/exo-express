@@ -1,0 +1,27 @@
+# Netlify configuration for EXO EXPRESS Web App
+# This project uses Next.js with output: "export" (static HTML export)
+
+[build]
+  # Next.js build command
+  command = "next build"
+
+  # Publish directory - Next.js export generates static HTML here
+  # With output: "export", the files are placed in the project root
+  publish = "."
+
+# Redirects for client-side routing (SPA routing)
+# Since this is a static export, all routes must resolve to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Headers for security and caching
+[[headers]]
+  for = "/*"
+  values = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "origin-when-cross-origin",
+  }

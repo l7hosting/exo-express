@@ -1,0 +1,25 @@
+{
+  "name": "@exo/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "npx --yes serve@14 out -l 3000",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "deploy:surge": "npx --yes surge@0.46.0 ./out exoexpress.surge.sh"
+  },
+  "dependencies": {
+    "next": "^15.1.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.6",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
